@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-course-practice",
+  "version": "1.0.0",
+  "description": "this project is the todo task that provide via node js course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Deep",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "yargs": "^17.7.2"
+  }
+}
