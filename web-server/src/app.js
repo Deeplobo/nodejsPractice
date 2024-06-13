@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const fetchWeather = require("../../weather-app/app");
 // const { title, } = require("process");
 // console.log("title:", title);
 
@@ -14,20 +15,8 @@ const parsePage = path.join(__dirname, "../template/partials");
 //setting handle engine and view
 app.set("view engine", "hbs");
 app.set("views", indexPage);
-app.use(express.static(indexPage)); // need to understand how this express "use" method is used
+// app.use(express.static(indexPage)); // need to understand how this express "use" method is used
 hbs.registerPartials(parsePage);
-const body = [
-  {
-    name: "lobo",
-    age: 27,
-    location: "Ind",
-  },
-  {
-    name: "kaka",
-    age: 27,
-    location: "China",
-  },
-];
 app.get("", (request, response) => {
   response.render("index", {
     title: "HBS engine",
@@ -40,8 +29,13 @@ app.get("/about", (request, response) => {
     name: "Lobo",
   });
 });
-app.get("/weather", (request, response) => {
-  response.status(200).send(body);
+app.get("/weather", async (request, response) => {
+  if (!request.query.address) {
+    return response.send({ err: "please provide address" });
+  }
+  const queryAddress = request.query.address;
+  const data = await fetchWeather(queryAddress);
+  response.status(200).send(data);
 });
 app.get("/about/*", (request, response) => {
   response.render("404", {
