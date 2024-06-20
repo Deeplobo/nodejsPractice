@@ -9,23 +9,24 @@ const fetchWeather = require("../../weather-app/app");
 const app = express();
 const indexPage = path.join(__dirname, "../template/views");
 const parsePage = path.join(__dirname, "../template/partials");
-// const aboutPage = path.join(__dirname, "../public/about."); // this one has no use
-// const showAbout = app.use(express.static(aboutPage)); // this has no use
+const staticAsset = path.join(__dirname, "../public");
 
+//setup static directory to server
+app.use(express.static(staticAsset));
 //setting handle engine and view
 app.set("view engine", "hbs");
 app.set("views", indexPage);
-// app.use(express.static(indexPage)); // need to understand how this express "use" method is used
 hbs.registerPartials(parsePage);
+
 app.get("", (request, response) => {
   response.render("index", {
-    title: "HBS engine",
+    title: "Weather app",
     name: "Lobo",
   });
 });
 app.get("/about", (request, response) => {
   response.render("about", {
-    title: "HBS engine",
+    title: "About",
     name: "Lobo",
   });
 });
@@ -37,16 +38,18 @@ app.get("/weather", async (request, response) => {
   const data = await fetchWeather(queryAddress);
   response.status(200).send(data);
 });
+
 app.get("/about/*", (request, response) => {
   response.render("404", {
     err: "about/*",
   });
 });
-app.get("*", (request, response) => {
-  response.render("404", {
-    err: "the page you are looking",
-  });
-});
+
+// app.get("*", (request, response) => {
+//   response.render("404", {
+//     err: "the page you are looking",
+//   });
+// });
 
 app.listen(3000, () => {
   console.log("server running in port 3000");
