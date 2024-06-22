@@ -109,7 +109,10 @@ input:focus {
   padding-left: 5px;
 }
 #err {
+  height: 0;
+  overflow: hidden;
   line-break: auto;
+  transition: 0.5s;
 }
 .flex {
   display: flex;

@@ -14,6 +14,7 @@ weatherForm.addEventListener("submit", async (e) => {
   try {
     if (weatherInfo.err) {
       errDiv.style.color = "red";
+      errDiv.style.height = "5rem";
       errDiv.innerHTML = weatherInfo.err;
       return;
     } else {
@@ -27,7 +28,8 @@ weatherForm.addEventListener("submit", async (e) => {
     console.log("error in client js");
   } finally {
     timer = setTimeout(() => {
-      window.location.reload();
+      errDiv.style.height = 0;
+      //   window.location.reload();
     }, 3000);
   }
 });
