@@ -45,11 +45,11 @@ app.get("/about/*", (request, response) => {
   });
 });
 
-// app.get("*", (request, response) => {
-//   response.render("404", {
-//     err: "the page you are looking",
-//   });
-// });
+app.get("*", (request, response) => {
+  response.render("404", {
+    err: "the page you are looking",
+  });
+});
 
 app.listen(3000, () => {
   console.log("server running in port 3000");

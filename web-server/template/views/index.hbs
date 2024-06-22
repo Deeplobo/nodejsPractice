@@ -1,20 +1,39 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css">
-    <title>weather app</title>
-  </head>
 
-  <body>
-    <div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <title>weather app</title>
+</head>
+
+<body>
+  <div class="main-container">
 
     {{>header}}
     <h2>Provide a city to fetch weather</h2>
-    <p>the current weather of</p>
-    {{>footer}}
-  <script  src="/js/index.js"></script>
+    <span>The current weather of &sc;</span><span id="city"></span>
+    <h3 id="err"></h3>
+    <div id="forecast" class="forecast">
+      <img id="weather-icon" src="" alt="">
+      <div class="flex">
+        <h4>Temperature is:&nbsp;</h4>
+      <h4 id="temp"></h4>
+      </div>
+      <div class="flex">
+        <h4>Currently:&nbsp;</h4>
+      <h4 id="weather-description"></h4>
+      </div>
     </div>
-  </body>
+    <br>
+    <form id="weather-form" action=" ">
+      <label for="city">Enter a city name</label>
+      <input name="city" type="text">
+      <button type="submit">Submit</button>
+    </form>
+    {{>footer}}
+    <script src="/js/index.js"></script>
+  </div>
+</body>
 
 </html>
