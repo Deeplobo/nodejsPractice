@@ -6,6 +6,7 @@ const forecastDiv = document.querySelector("#forecast");
 const errDiv = document.querySelector("#err");
 console.log("forecastDiv:", forecastDiv);
 const weatherDescription = document.querySelector("#weather-description");
+let timer, timer2;
 //event listener for form
 weatherForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -16,6 +17,11 @@ weatherForm.addEventListener("submit", async (e) => {
       errDiv.style.color = "red";
       errDiv.style.height = "5rem";
       errDiv.innerHTML = weatherInfo.err;
+      timer = setTimeout(() => {
+        errDiv.style.height = 0;
+        clearTimeout(timer);
+        //   window.location.reload();
+      }, 3000);
       return;
     } else {
       city.innerHTML = weatherInfo.name;
@@ -23,14 +29,15 @@ weatherForm.addEventListener("submit", async (e) => {
       weatherDescription.innerHTML = weatherInfo.weatherDescription;
       weatherIcon.src = weatherInfo.weatherIcon;
       forecastDiv.style.height = "12rem";
+      timer2 = setTimeout(() => {
+        forecastDiv.style.height = 0;
+        clearTimeout(timer2);
+      }, 5000);
     }
   } catch {
     console.log("error in client js");
   } finally {
-    timer = setTimeout(() => {
-      errDiv.style.height = 0;
-      //   window.location.reload();
-    }, 3000);
+    console.log("fetch function ended");
   }
 });
 //client side fetch function
