@@ -1,1 +1,22 @@
-[{"title":"new title","body":"new story"},{"title":"lobo","body":"new story hmmm"},{"title":"hikaru","body":"the sound of silence"},{"title":"hru","body":"testind"}]
+[
+  {
+    "title": "new title",
+    "body": "new story"
+  },
+  {
+    "title": "lobo",
+    "body": "new story hmmm"
+  },
+  {
+    "title": "hikaru",
+    "body": "the sound of silence"
+  },
+  {
+    "title": "hru",
+    "body": "testind"
+  },
+  {
+    "title": "hi from terminal",
+    "body": "terminal body"
+  }
+]
