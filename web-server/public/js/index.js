@@ -4,7 +4,6 @@ const temp = document.querySelector("#temp");
 const city = document.querySelector("#city");
 const forecastDiv = document.querySelector("#forecast");
 const errDiv = document.querySelector("#err");
-console.log("forecastDiv:", forecastDiv);
 const weatherDescription = document.querySelector("#weather-description");
 let timer, timer2;
 //event listener for form
@@ -20,7 +19,7 @@ weatherForm.addEventListener("submit", async (e) => {
       timer = setTimeout(() => {
         errDiv.style.height = 0;
         clearTimeout(timer);
-        //   window.location.reload();
+        window.location.reload();
       }, 3000);
       return;
     } else {
@@ -32,7 +31,7 @@ weatherForm.addEventListener("submit", async (e) => {
       timer2 = setTimeout(() => {
         forecastDiv.style.height = 0;
         clearTimeout(timer2);
-      }, 5000);
+      }, 10000);
     }
   } catch {
     console.log("error in client js");
