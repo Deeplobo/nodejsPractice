@@ -19,7 +19,7 @@ weatherForm.addEventListener("submit", async (e) => {
       timer = setTimeout(() => {
         errDiv.style.height = 0;
         clearTimeout(timer);
-        window.location.reload();
+        // window.location.reload();
       }, 3000);
       return;
     } else {
