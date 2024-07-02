@@ -5,11 +5,11 @@ const city = document.querySelector("#city");
 const forecastDiv = document.querySelector("#forecast");
 const errDiv = document.querySelector("#err");
 const weatherDescription = document.querySelector("#weather-description");
-let timer, timer2;
 //event listener for form
 weatherForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const cityName = e.target.city.value;
+  forecastDiv.style.height = "0";
   const weatherInfo = await fetchWeatherClient(cityName);
   try {
     if (weatherInfo.err) {
@@ -28,10 +28,6 @@ weatherForm.addEventListener("submit", async (e) => {
       weatherDescription.innerHTML = weatherInfo.weatherDescription;
       weatherIcon.src = weatherInfo.weatherIcon;
       forecastDiv.style.height = "12rem";
-      timer2 = setTimeout(() => {
-        forecastDiv.style.height = 0;
-        clearTimeout(timer2);
-      }, 10000);
     }
   } catch {
     console.log("error in client js");
