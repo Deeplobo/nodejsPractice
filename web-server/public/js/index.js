@@ -10,6 +10,7 @@ weatherForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const cityName = e.target.city.value;
   forecastDiv.style.height = "0";
+  city.innerHTML = " ";
   const weatherInfo = await fetchWeatherClient(cityName);
   try {
     if (weatherInfo.err) {
