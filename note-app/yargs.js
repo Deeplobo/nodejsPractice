@@ -1,17 +1,18 @@
 const yargs = require("yargs");
 const notes = require("./note");
+console.log("running");
 yargs.command({
   command: "add",
   describe: "This one adds notes",
   builder: {
     title: {
       describe: "Note title",
-      demandOption: false,
+      demandOption: true,
       type: "string",
     },
     body: {
       describe: "Body of note",
-      demandOption: false,
+      demandOption: true,
       type: "string",
     },
   },
@@ -25,7 +26,7 @@ yargs.command({
   builder: {
     title: {
       describe: "Note title",
-      demandOption: false,
+      demandOption: true,
       type: "string",
     },
   },
@@ -39,7 +40,7 @@ yargs.command({
   builder: {
     title: {
       describe: "find the title",
-      demandOption: false,
+      demandOption: true,
       type: "string",
     },
   },
